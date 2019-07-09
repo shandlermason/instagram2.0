@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xc-V1-Hiu">
@@ -45,8 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PEX-8K-ktV"/>
-                                    <action selector="loginUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rqc-yp-hpG"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dgv-6C-Sfc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNZ-h1-rsu">
@@ -73,19 +72,19 @@
                         <outlet property="emailField" destination="3Xc-V1-Hiu" id="bip-dG-thO"/>
                         <outlet property="passwordField" destination="8hh-Oi-U4n" id="sbh-hn-6Ru"/>
                         <outlet property="usernameField" destination="iWD-hA-XiK" id="weQ-lQ-PNo"/>
-                        <segue destination="FaX-l3-tLh" kind="presentation" id="IYd-dn-WwW"/>
+                        <segue destination="FaX-l3-tLh" kind="presentation" identifier="logIn" id="IYd-dn-WwW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134.78260869565219" y="144.64285714285714"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home Timeline-->
         <scene sceneID="lwc-lI-aq3">
             <objects>
-                <tableViewController id="PYD-QL-4Mz" customClass="TimelineTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Home" title="Home Timeline" id="PYD-QL-4Mz" customClass="TimelineTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dqp-mg-ioQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="juj-Vv-UHK">
@@ -100,7 +99,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s7H-oR-dbd" id="96h-Fe-uej">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -110,18 +109,78 @@
                             <outlet property="delegate" destination="PYD-QL-4Mz" id="y4c-ab-UM6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="e3A-rW-HbO"/>
+                    <navigationItem key="navigationItem" title="Home Timeline" id="e3A-rW-HbO">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="3AM-x8-qv1">
+                            <connections>
+                                <action selector="logout:" destination="PYD-QL-4Mz" id="4sj-eb-84J"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOut" id="Qbe-8y-Jpg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="eiD-qu-pD6">
+                            <connections>
+                                <segue destination="O2Z-cF-KG7" kind="presentation" id="BXo-tB-nMU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WW4-sD-LDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2183" y="145"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="Efz-OW-4hJ">
+            <objects>
+                <tableViewController title="Compose View Controller" id="9mk-BA-vmy" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="C7x-dD-fpm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ITK-8O-tMn">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ITK-8O-tMn" id="7EO-oJ-RfR">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9mk-BA-vmy" id="7L1-ch-Dqy"/>
+                            <outlet property="delegate" destination="9mk-BA-vmy" id="Ld9-IF-v0s"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Compose View Controller" id="V92-E6-4P3">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="gBk-ck-Zfr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="QcO-8u-XYw"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ac-Jb-SRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4058" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CBS-OA-1Ct">
+            <objects>
+                <navigationController id="O2Z-cF-KG7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WcO-fR-qrF">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9mk-BA-vmy" kind="relationship" relationship="rootViewController" id="53t-hV-bbG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dg-mx-ofC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3138" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I8k-Y8-eaX">
             <objects>
                 <navigationController id="FaX-l3-tLh" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UcA-dH-9GY">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -133,4 +192,10 @@
             <point key="canvasLocation" x="1194" y="145"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qbe-8y-Jpg"/>
+    </inferredMetricsTieBreakers>
 </document>

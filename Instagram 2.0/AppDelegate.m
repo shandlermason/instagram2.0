@@ -26,8 +26,19 @@
     }];
     
     [Parse initializeWithConfiguration:config];
-  
+    
+    //check if there is a current user in Parse cache or not. If there is a cached user already present then you can directly load the Home view controller (without asking the user to login again)
+    
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
+        NSLog(@"Totally works!");
+    }
+    
+    //return YES;
     return YES;
+    
 }
 
 

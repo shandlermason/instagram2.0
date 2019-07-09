@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 //@property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -49,6 +50,8 @@
             NSLog(@"User registered successfully");
             
             // manually segue to logged in view
+         [self performSegueWithIdentifier:@"logIn" sender:nil];
+          
             
         }
     }];
@@ -56,14 +59,16 @@
 - (void)loginUser {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
-    
+    NSLog(@"Works");
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            
+        
             // display view controller that needs to shown after successful login
+            [self performSegueWithIdentifier:@"logIn" sender:nil];
+            
         }
     }];
 }
