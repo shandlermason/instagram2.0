@@ -6,6 +6,7 @@ target 'Instagram 2.0' do
   use_frameworks!
 
   # Pods for Instagram 2.0
+  pod 'Parse'
 
   target 'Instagram 2.0Tests' do
     inherit! :search_paths
