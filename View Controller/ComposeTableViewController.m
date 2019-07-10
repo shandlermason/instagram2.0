@@ -1,19 +1,18 @@
 //
-//  TimelineTableViewController.m
+//  ComposeTableViewController.m
 //  Instagram 2.0
 //
-//  Created by samason1 on 7/9/19.
+//  Created by samason1 on 7/10/19.
 //  Copyright © 2019 samason1. All rights reserved.
 //
 
-#import "TimelineTableViewController.h"
-#import "Parse/Parse.h"
+#import "ComposeTableViewController.h"
 
-@interface TimelineTableViewController ()
+@interface ComposeTableViewController ()
 
 @end
 
-@implementation TimelineTableViewController
+@implementation ComposeTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,20 +23,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (IBAction)logout:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-         [self performSegueWithIdentifier:@"logOut" sender:nil];
-    }];
-}
-
-/*
-- (IBAction)camera:(id)sender {
-    NSLog(@"Camera button was pressed");
-    
-    //[self performSegueWithIdentifier:@"cameraSegue" sender:nil];
-}
-*/
 
 #pragma mark - Table view data source
 
