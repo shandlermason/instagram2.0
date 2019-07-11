@@ -28,7 +28,24 @@
     self.imageView.image = chosenImage;
     
     NSLog(@"Share button did work");
+    // construct PFQuery
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
     
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            NSLog(@"Query did work");
+            
+        }
+        else {
+            // handle error
+            NSLog(@"Query did not work");
+        }
+    }];
 
 }
 
@@ -62,8 +79,10 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
+   //try to resize image
     
-    //Post* myPost = [[Post alloc] init]; //First, we create an instance of post
+    
+    [self resizeImage:originalImage withSize:CGSizeMake(50.0, 50.0)];
     
     [Post postUserImage:originalImage withCaption:self.writeCaption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         

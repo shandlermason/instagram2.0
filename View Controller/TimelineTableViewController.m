@@ -8,8 +8,13 @@
 
 #import "TimelineTableViewController.h"
 #import "Parse/Parse.h"
+#import "Post.h"
+#import "PhotoViewController.h"
+#import "PostCellTableViewCell.h"
 
-@interface TimelineTableViewController ()
+@interface TimelineTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) NSArray *postArray;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -18,12 +23,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+     [self fetchTimeLine];
+    
 }
+-(void)fetchTimeLine{
+    // Get timeline
+  
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+    
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            NSLog(@"Query did work");
+             self.postArray = posts;
+            [self.tableView reloadData];
+        }
+        else {
+            // handle error
+//            NSLog(@"Query did not work", error.localizedDescription);
+        }
+    }];
+}
+
 - (IBAction)logout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
@@ -31,35 +60,32 @@
     }];
 }
 
-/*
-- (IBAction)camera:(id)sender {
-    NSLog(@"Camera button was pressed");
-    
-    //[self performSegueWithIdentifier:@"cameraSegue" sender:nil];
-}
-*/
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.postArray.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    PostCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCellTableViewCell" forIndexPath:indexPath];
+    Post *post = self.postArray[indexPath.row];
+    PFFileObject *imageFile = post.image;
     
-    // Configure the cell...
+    [imageFile getDataInBackgroundWithBlock:^(NSData * data, NSError * error) {
+        if (!error)
+        {
+            NSLog(@"Get data in Background with block");
+            UIImage *image = [UIImage imageWithData:data];
+            [cell.picture setImage:image];
+        }
+        
+    } ];
+  
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
