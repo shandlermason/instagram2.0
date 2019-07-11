@@ -12,6 +12,8 @@
 #import "PhotoViewController.h"
 #import "PostCellTableViewCell.h"
 #import "AppDelegate.h"
+#import "DateTools.h"
+
 
 @interface TimelineTableViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSArray *postArray;
@@ -59,12 +61,9 @@
         }
         else {
             // handle error
-//            NSLog(@"Query did not work", error.localizedDescription);
         }
         [self.refreshControl endRefreshing];
-        // Stop the activity indicator
-        // Hides automatically if "Hides When Stopped" is enabled
-       // [self.activityIndicator stopAnimating];
+      
     }];
 }
 
@@ -73,13 +72,13 @@
     //[self fetchTimeLine];
     
     
-    PFQuery *postQuery = [Post query];
-    [postQuery orderByDescending:@"createdAt"];
-    [postQuery includeKey:@"author"];
-    postQuery.limit = 20;
+    PFQuery *postQuery2 = [Post query];
+    [postQuery2 orderByDescending:@"createdAt"];
+    [postQuery2 includeKey:@"author"];
+    postQuery2.limit = 20;
     
     // fetch data asynchronously
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+    [postQuery2 findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             // do something with the data fetched
             NSLog(@"Query did work");
@@ -114,6 +113,9 @@
     
     //post caption with picture onto TimeLine
      cell.pictureTLcaption.text=post.caption;
+    
+    NSDate *time = post.createdAt;
+    cell.timeStamp.text=time.timeAgoSinceNow;
   
     
     [imageFile getDataInBackgroundWithBlock:^(NSData * data, NSError * error) {

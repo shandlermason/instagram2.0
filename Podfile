@@ -7,6 +7,7 @@ target 'Instagram 2.0' do
 
   # Pods for Instagram 2.0
   pod 'Parse'
+  pod 'DateTools'
 
   target 'Instagram 2.0Tests' do
     inherit! :search_paths
