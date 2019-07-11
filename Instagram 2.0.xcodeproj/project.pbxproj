@@ -11,6 +11,8 @@
 		840C813F22D411F8001E0D91 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840C813E22D411F8001E0D91 /* LoginViewController.m */; };
 		8412404C22D67A9B0069C20B /* ComposeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412404B22D67A9B0069C20B /* ComposeTableViewController.m */; };
 		8412404F22D690E80069C20B /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412404E22D690E80069C20B /* PhotoViewController.m */; };
+		8412405222D69C7F0069C20B /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412405122D69C7F0069C20B /* Post.m */; };
+		8412405622D6A0D00069C20B /* PostCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412405522D6A0D00069C20B /* PostCellTableViewCell.m */; };
 		84BDE5A522D51C7400A8ECDE /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE5A422D51C7400A8ECDE /* TimelineTableViewController.m */; };
 		84E95AD122D3FBC400D22F34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E95AD022D3FBC400D22F34 /* AppDelegate.m */; };
 		84E95AD422D3FBC400D22F34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E95AD322D3FBC400D22F34 /* ViewController.m */; };
@@ -54,6 +56,10 @@
 		8412404B22D67A9B0069C20B /* ComposeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeTableViewController.m; sourceTree = "<group>"; };
 		8412404D22D690E80069C20B /* PhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		8412404E22D690E80069C20B /* PhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		8412405022D69C7F0069C20B /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		8412405122D69C7F0069C20B /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		8412405422D6A0D00069C20B /* PostCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCellTableViewCell.h; sourceTree = "<group>"; };
+		8412405522D6A0D00069C20B /* PostCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCellTableViewCell.m; sourceTree = "<group>"; };
 		84BDE5A322D51C7400A8ECDE /* TimelineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		84BDE5A422D51C7400A8ECDE /* TimelineTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
 		84E95ACC22D3FBC400D22F34 /* Instagram 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,10 +136,22 @@
 			path = "View Controller";
 			sourceTree = "<group>";
 		};
+		8412405322D69C8F0069C20B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8412405422D6A0D00069C20B /* PostCellTableViewCell.h */,
+				8412405522D6A0D00069C20B /* PostCellTableViewCell.m */,
+				8412405122D69C7F0069C20B /* Post.m */,
+				8412405022D69C7F0069C20B /* Post.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		84E95AC322D3FBC400D22F34 = {
 			isa = PBXGroup;
 			children = (
 				84E95ACE22D3FBC400D22F34 /* Instagram 2.0 */,
+				8412405322D69C8F0069C20B /* Model */,
 				840C814022D41204001E0D91 /* View Controller */,
 				84E95AE722D3FBC500D22F34 /* Instagram 2.0Tests */,
 				84E95AF222D3FBC500D22F34 /* Instagram 2.0UITests */,
@@ -420,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8412405622D6A0D00069C20B /* PostCellTableViewCell.m in Sources */,
 				840C813F22D411F8001E0D91 /* LoginViewController.m in Sources */,
 				84E95AD422D3FBC400D22F34 /* ViewController.m in Sources */,
 				84E95ADF22D3FBC500D22F34 /* main.m in Sources */,
@@ -427,6 +446,7 @@
 				8412404C22D67A9B0069C20B /* ComposeTableViewController.m in Sources */,
 				84BDE5A522D51C7400A8ECDE /* TimelineTableViewController.m in Sources */,
 				8412404F22D690E80069C20B /* PhotoViewController.m in Sources */,
+				8412405222D69C7F0069C20B /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
