@@ -13,13 +13,26 @@
 @interface PhotoViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *writeCaption;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) UIImage *originalImage ;
+@property (strong, nonatomic)NSString *captionText;
 
 @end
 
 @implementation PhotoViewController
 
 - (IBAction)shareButton:(id)sender {
-    UIImagePickerController *shareDelegate;
+    [Post postUserImage:self.originalImage withCaption: self.captionWrite.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"Share Button was a success");
+        }
+        else{
+            NSLog(@"Share button failed");
+        }
+    }];
+        [self dismissViewControllerAnimated:YES completion:nil];
+   
+    
+  /*  UIImagePickerController *shareDelegate;
     NSDictionary *infoDelegate;
     
     [self imagePickerController:(shareDelegate) didFinishPickingMediaWithInfo:(infoDelegate)];
@@ -31,7 +44,7 @@
 
     NSLog(@"Share button did work");
     // construct PFQuery
-    PFQuery *postQuery = [Post query];
+   /* PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
@@ -48,7 +61,28 @@
             NSLog(@"Query did not work");
         }
     }];
+    
+    // Do something with the images (based on your use case)
+    //try to resize image
+   
+    
 
+    
+    //Allows you to write a caption before sharing
+    self.captionText = self.captionWrite.text;
+    PFObject *addValues= [PFObject objectWithClassName:@"Post"];
+    [addValues setObject: captionText forKey:@"caption"];
+    [addValues saveInBackground];
+    
+    [Post postUserImage:self.originalImage withCaption:self.writeCaption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        
+        NSLog(@"postUserImage method works");
+        
+    }];
+    
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];*/
 }
 
 - (void)viewDidLoad {
@@ -78,33 +112,14 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+   self.originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    // Do something with the images (based on your use case)
-   //try to resize image
-    
-    
-    [self resizeImage:originalImage withSize:CGSizeMake(50.0, 50.0)];
+    [self resizeImage:self.originalImage withSize:CGSizeMake(50.0, 50.0)];
     
     //sets image chosen into smaller image view so you can write a caption then share
-    self.imageView.image=originalImage;
-    
-    //Allows you to write a caption before sharing
-    NSString *captionText = self.captionWrite.text;
-    PFObject *addValues= [PFObject objectWithClassName:@"Post"];
-    [addValues setObject: captionText forKey:@"caption"];
-    [addValues saveInBackground];
-    
-    [Post postUserImage:originalImage withCaption:self.writeCaption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        
-        NSLog(@"postUserImage method works");
-       
-    }];
-    
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
+    self.imageView.image=self.originalImage;
+     [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 

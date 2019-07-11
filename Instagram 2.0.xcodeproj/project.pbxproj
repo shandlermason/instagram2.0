@@ -13,6 +13,7 @@
 		8412404F22D690E80069C20B /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412404E22D690E80069C20B /* PhotoViewController.m */; };
 		8412405222D69C7F0069C20B /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412405122D69C7F0069C20B /* Post.m */; };
 		8412405622D6A0D00069C20B /* PostCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412405522D6A0D00069C20B /* PostCellTableViewCell.m */; };
+		8412405922D7F1CA0069C20B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8412405822D7F1CA0069C20B /* DetailViewController.m */; };
 		84BDE5A522D51C7400A8ECDE /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE5A422D51C7400A8ECDE /* TimelineTableViewController.m */; };
 		84E95AD122D3FBC400D22F34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E95AD022D3FBC400D22F34 /* AppDelegate.m */; };
 		84E95AD422D3FBC400D22F34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E95AD322D3FBC400D22F34 /* ViewController.m */; };
@@ -60,6 +61,8 @@
 		8412405122D69C7F0069C20B /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		8412405422D6A0D00069C20B /* PostCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCellTableViewCell.h; sourceTree = "<group>"; };
 		8412405522D6A0D00069C20B /* PostCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCellTableViewCell.m; sourceTree = "<group>"; };
+		8412405722D7F1CA0069C20B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		8412405822D7F1CA0069C20B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		84BDE5A322D51C7400A8ECDE /* TimelineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		84BDE5A422D51C7400A8ECDE /* TimelineTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
 		84E95ACC22D3FBC400D22F34 /* Instagram 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +129,8 @@
 			children = (
 				8412404A22D67A9B0069C20B /* ComposeTableViewController.h */,
 				8412404B22D67A9B0069C20B /* ComposeTableViewController.m */,
+				8412405722D7F1CA0069C20B /* DetailViewController.h */,
+				8412405822D7F1CA0069C20B /* DetailViewController.m */,
 				84BDE5A322D51C7400A8ECDE /* TimelineTableViewController.h */,
 				84BDE5A422D51C7400A8ECDE /* TimelineTableViewController.m */,
 				8412404D22D690E80069C20B /* PhotoViewController.h */,
@@ -443,6 +448,7 @@
 				84E95AD422D3FBC400D22F34 /* ViewController.m in Sources */,
 				84E95ADF22D3FBC500D22F34 /* main.m in Sources */,
 				84E95AD122D3FBC400D22F34 /* AppDelegate.m in Sources */,
+				8412405922D7F1CA0069C20B /* DetailViewController.m in Sources */,
 				8412404C22D67A9B0069C20B /* ComposeTableViewController.m in Sources */,
 				84BDE5A522D51C7400A8ECDE /* TimelineTableViewController.m in Sources */,
 				8412404F22D690E80069C20B /* PhotoViewController.m in Sources */,

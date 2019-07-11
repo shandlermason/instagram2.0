@@ -88,11 +88,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCellTableViewCell" rowHeight="361" id="s7H-oR-dbd" customClass="PostCellTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PostCellTableViewCell" rowHeight="361" id="s7H-oR-dbd" customClass="PostCellTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="414" height="361"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s7H-oR-dbd" id="96h-Fe-uej">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="360.66666666666669"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="360.66666666666669"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVO-oT-bD8">
@@ -107,10 +107,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Stamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNS-DI-Uhj">
-                                            <rect key="frame" x="20" y="317" width="101" height="25"/>
+                                            <rect key="frame" x="20" y="317" width="170" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.51225849352970032" green="0.51225849352970032" blue="0.51225849352970032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -120,6 +120,7 @@
                                     <outlet property="picture" destination="DVO-oT-bD8" id="5HR-sF-akW"/>
                                     <outlet property="pictureTLcaption" destination="NYH-zR-UFi" id="Ed7-QX-BYp"/>
                                     <outlet property="timeStamp" destination="RNS-DI-Uhj" id="g6A-jI-TkZ"/>
+                                    <segue destination="VLr-UR-BcU" kind="push" id="1QJ-c7-GbN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -150,6 +151,47 @@
                 <exit id="Tma-FE-meu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2182.608695652174" y="143.47826086956522"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="f0o-Xv-hsg">
+            <objects>
+                <viewController id="VLr-UR-BcU" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vgW-iA-7qI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dZG-tA-JA1">
+                                <rect key="frame" x="0.0" y="30" width="414" height="295"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIA-rQ-muK">
+                                <rect key="frame" x="20" y="333" width="374" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TimeStamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwE-Rd-uTH">
+                                <rect key="frame" x="20" y="435" width="115" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.51225849349999997" green="0.51225849349999997" blue="0.51225849349999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="599-fF-4r4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nJm-7J-84b"/>
+                    <connections>
+                        <outlet property="detailCaption" destination="QIA-rQ-muK" id="th8-iB-8Hr"/>
+                        <outlet property="detailImage" destination="dZG-tA-JA1" id="C1k-WK-zZD"/>
+                        <outlet property="detailTimeStamp" destination="AwE-Rd-uTH" id="tI3-ye-aji"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2N-XO-PQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3015.9420289855075" y="-479.34782608695656"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="Efz-OW-4hJ">
