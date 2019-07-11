@@ -27,6 +27,8 @@
     UIImage *chosenImage = infoDelegate[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
     
+    // [self setImageView:chosenImage];
+
     NSLog(@"Share button did work");
     // construct PFQuery
     PFQuery *postQuery = [Post query];
@@ -69,6 +71,7 @@
         
     }    
     [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
    
 }
 
@@ -84,11 +87,21 @@
     
     [self resizeImage:originalImage withSize:CGSizeMake(50.0, 50.0)];
     
+    //sets image chosen into smaller image view so you can write a caption then share
+    self.imageView.image=originalImage;
+    
+    //Allows you to write a caption before sharing
+    NSString *captionText = self.captionWrite.text;
+    PFObject *addValues= [PFObject objectWithClassName:@"Post"];
+    [addValues setObject: captionText forKey:@"caption"];
+    [addValues saveInBackground];
+    
     [Post postUserImage:originalImage withCaption:self.writeCaption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         
         NSLog(@"postUserImage method works");
-        
+       
     }];
+    
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

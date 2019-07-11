@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PhotoViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *captionWrite;
 + (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info;
 @end
 

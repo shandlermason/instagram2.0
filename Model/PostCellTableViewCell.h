@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PostCellTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
-@property (weak, nonatomic) IBOutlet UITextView *pictureCaption;
+@property (weak, nonatomic) IBOutlet UILabel *pictureTLcaption;
 
 
 @end
