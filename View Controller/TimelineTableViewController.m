@@ -76,7 +76,7 @@
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
-    //postQuery.limit = 20;
+    postQuery.limit = 20;
     
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
@@ -111,9 +111,10 @@
     PostCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCellTableViewCell" forIndexPath:indexPath];
     Post *post = self.postArray[indexPath.row];
     PFFileObject *imageFile = post.image;
-    PFFileObject *cap = post.caption;
     
- 
+    //post caption with picture onto TimeLine
+     cell.pictureTLcaption.text=post.caption;
+  
     
     [imageFile getDataInBackgroundWithBlock:^(NSData * data, NSError * error) {
         if (!error)
@@ -121,7 +122,8 @@
             NSLog(@"Get data in Background with block");
             UIImage *image = [UIImage imageWithData:data];
             [cell.picture setImage:image];
-            [cell.pictureTLcaption setText:cap];
+           
+             
         }
         
     } ];
