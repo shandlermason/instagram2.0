@@ -20,18 +20,25 @@
 
 @implementation PhotoViewController
 
-- (IBAction)shareButton:(id)sender {
+
+- (IBAction)share:(id)sender {
+    NSLog(@"Share Button was PRESSED");
     [Post postUserImage:self.originalImage withCaption: self.captionWrite.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Share Button was a success");
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
             NSLog(@"Share button failed");
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
-        [self dismissViewControllerAnimated:YES completion:nil];
-   
-    
+}
+
+- (IBAction)cancel:(id)sender {
+    [self performSegueWithIdentifier:@"goHome" sender:self];
+}
+
   /*  UIImagePickerController *shareDelegate;
     NSDictionary *infoDelegate;
     
@@ -83,7 +90,7 @@
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];*/
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -112,13 +119,14 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-   self.originalImage = info[UIImagePickerControllerOriginalImage];
+    // UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    [self resizeImage:self.originalImage withSize:CGSizeMake(50.0, 50.0)];
+    
+    self.originalImage = [self resizeImage:editedImage withSize:CGSizeMake(100.0, 100.0)];
     
     //sets image chosen into smaller image view so you can write a caption then share
     self.imageView.image=self.originalImage;
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 

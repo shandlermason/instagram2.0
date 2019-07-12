@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "DateTools.h"
 #import "DetailViewController.h"
+#import "LoginViewController.h"
 
 
 @interface TimelineTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -98,7 +99,11 @@
 - (IBAction)logout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
-         [self performSegueWithIdentifier:@"logOut" sender:nil];
+         // [self performSegueWithIdentifier:@"logOut" sender:nil];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        appDelegate.window.rootViewController = loginVC;
     }];
 }
 
@@ -171,20 +176,24 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    // Pass the selected object to the new view controller.
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    Post *post = self.postArray[indexPath.row];
-    
-    
-    DetailViewController *detailViewController = [segue destinationViewController];
-    
-    detailViewController.posts = post;
-}
+ //In a storyboard-based application, you will often want to do a little preparation before navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     //Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    // Pass the selected object to the new view controller.
+ 
+    if ([[segue identifier] isEqualToString:@"goDetails" ]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.postArray[indexPath.row];
+        DetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.posts = post;
+    }
+
+}
+- (IBAction)didTapCamera:(id)sender {
+    [self performSegueWithIdentifier:@"goCamera" sender:self];
+}
 
 @end

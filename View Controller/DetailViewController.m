@@ -30,7 +30,10 @@
         UIImage *imageLoad = [UIImage imageWithData:data];
         [self.detailImage setImage:imageLoad];
     }];
-    self.detailCaption.text=self.posts.caption;
+    
+    self.detailCaption.text= self.posts.caption;
+    
+    // Format this correctly
     NSDate *time = self.posts.createdAt;
     self.detailTimeStamp.text=time.timeAgoSinceNow;
     //_posts.detailTimeStamp.text=time.timeIntervalSinceNow;
